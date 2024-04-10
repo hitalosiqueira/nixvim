@@ -70,7 +70,7 @@ with lib; let
       ;
     inherit (python3.pkgs) autopep8 flake8 vulture mdformat;
     inherit (nodePackages) eslint eslint_d prettier alex stylelint textlint write-good;
-    inherit (phpPackages) phan phpcs phpstan psalm;
+    inherit (phpPackages) phan phpstan psalm;
     inherit (luaPackages) luacheck;
     inherit (haskellPackages) fourmolu;
     ansible_lint = ansible-lint;
@@ -124,25 +124,27 @@ in {
       default = [];
     };
 
-    toolPackages = attrsets.mapAttrs (tool: pkg:
-      mkOption {
-        type = types.package;
-        default = pkg;
-        description = "Package for ${tool}";
-      })
-    toolPkgs;
+    toolPackages =
+      attrsets.mapAttrs
+      (tool: pkg:
+        mkOption {
+          type = types.package;
+          default = pkg;
+          description = "Package for ${tool}";
+        })
+      toolPkgs;
 
     /*
     Users can set the options as follows:
 
     {
-      c = {
-        linter = "cppcheck";
-        formatter = ["clang-format" "uncrustify"];
-      };
-      go = {
-        linter = ["djlint" "golangci_lint"];
-      };
+    c = {
+      linter = "cppcheck";
+      formatter = ["clang-format" "uncrustify"];
+    };
+    go = {
+      linter = ["djlint" "golangci_lint"];
+    };
     }
     */
     setup = let
@@ -170,7 +172,8 @@ in {
           freeformType = types.attrs;
 
           options =
-            (builtins.listToAttrs (builtins.map (lang: let
+            (builtins.listToAttrs (builtins.map
+              (lang: let
                 langTools = languageTools lang;
               in {
                 name = lang;
@@ -201,7 +204,8 @@ in {
     # Tools that have been selected by the user
     tools = lists.unique (builtins.filter builtins.isString (
       builtins.concatLists (
-        builtins.map ({
+        builtins.map
+        ({
           linter ? [],
           formatter ? [],
         }:
@@ -232,7 +236,8 @@ in {
       (toolAsList opt);
 
     setupOptions =
-      (builtins.mapAttrs (
+      (builtins.mapAttrs
+        (
           _: {
             linter ? [],
             formatter ? [],
