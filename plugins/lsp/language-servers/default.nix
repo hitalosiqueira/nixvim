@@ -452,11 +452,6 @@ with lib; let
       description = "Enable pyright, for Python.";
     }
     {
-      name = "rnix-lsp";
-      description = "Enable rnix LSP, for Nix";
-      serverName = "rnix";
-    }
-    {
       name = "ruff-lsp";
       description = "Enable ruff-lsp, for Python.";
       package = pkgs.python3Packages.ruff-lsp;
