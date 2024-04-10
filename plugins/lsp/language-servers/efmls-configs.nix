@@ -70,7 +70,7 @@ with lib; let
       ;
     inherit (python3.pkgs) autopep8 flake8 vulture mdformat;
     inherit (nodePackages) eslint eslint_d prettier alex stylelint textlint write-good;
-    inherit (phpPackages) phpcbf phan phpcs phpstan psalm;
+    inherit (phpPackages) phan phpcs phpstan psalm;
     inherit (luaPackages) luacheck;
     inherit (haskellPackages) fourmolu;
     ansible_lint = ansible-lint;

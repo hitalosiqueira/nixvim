@@ -87,7 +87,6 @@
           ktlint.enable = true;
           nixfmt.enable = true;
           nixpkgs_fmt.enable = true;
-          phpcbf.enable = true;
           prettier.enable = true;
           prettier_d_slim.enable = true;
           shfmt.enable = true;

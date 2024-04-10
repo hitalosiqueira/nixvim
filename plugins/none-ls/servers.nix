@@ -127,9 +127,6 @@
       nixpkgs_fmt = {
         package = pkgs.nixpkgs-fmt;
       };
-      phpcbf = {
-        package = pkgs.phpPackages.phpcbf;
-      };
       prettier = {
         package = pkgs.nodePackages.prettier;
       };
